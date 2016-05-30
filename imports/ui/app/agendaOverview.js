@@ -1,5 +1,4 @@
 import { Template } from 'meteor/templating';
-import { Session } from 'meteor/session';
 
 import { Dates } from '../../api/server.js';
 import { Desks } from '../../api/server.js';
@@ -8,22 +7,11 @@ import './agendaOverview.html'
 
 Template.agendaOverview.helpers({
 	dates() {
-		var givenMonth = Session.get('givenMonth');
-		var givenYear = Session.get('givenYear');
-
-		if(givenMonth == null) {
-			var thisDate = new Date;
-			var thisYear = thisDate.getFullYear();
-			var thisMonth = thisDate.getMonth();
-			Session.set('givenMonth', thisMonth);
-			Session.set('givenYear', thisYear);
-		} else {
-			var thisMonth = givenMonth;
-			var thisYear = givenYear;
-		}
 		// Get today's month year and date and render the rest of this month plus the next
-		
-		// var thisDate = thisDate.getDate() - 1;
+		var thisDate = new Date;
+		var thisYear = thisDate.getFullYear();
+		var thisMonth = thisDate.getMonth();
+		var thisDate = thisDate.getDate() - 1;
 		var dates = Dates.findOne({year: thisYear});
 		var thisMonthDates = dates && dates.dates && dates.dates[thisMonth];
 		// thisMonthDates.splice(0, thisDate);
@@ -48,10 +36,6 @@ Template.agendaOverview.helpers({
 			present: precense,
 			weekend: weekend
 		}
-	},
-	'currentMonth': function() {
-		var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		return months[Session.get('givenMonth')] + ' ' + Session.get('givenYear');
 	}
 });
 
@@ -72,32 +56,5 @@ Template.agendaOverview.events({
 
 			Meteor.call('insertPrecense', year, setModifier);
 		}
-	},
-	'click .arrow-right'(event) {
-		// Get next month
-		var givenMonth = Session.get('givenMonth') + 1;
-		var givenYear = Session.get('givenYear');
-
-		if(givenMonth == 12) {
-			givenYear++;
-			var givenMonth = 0;
-		}
-		// Render next month
-		Session.set('givenYear', givenYear);
-		Session.set('givenMonth', givenMonth);
-		
-	},
-	'click .arrow-left'(event) {
-		// Get previous month
-		var givenMonth = Session.get('givenMonth') - 1;
-		var givenYear = Session.get('givenYear');
-
-		if(givenMonth == -1) {
-			givenYear--;
-			var givenMonth = 11;
-		}
-		// Render previous month
-		Session.set('givenYear', givenYear);
-		Session.set('givenMonth', givenMonth);
 	}
 })

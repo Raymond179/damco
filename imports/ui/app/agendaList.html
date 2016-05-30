@@ -1,0 +1,71 @@
+<template name="agendaList">
+	<section class="agendaList">
+		<header class="app-header">
+			<a href="/overview">
+				<svg class="header-icon-left" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+					<rect y="0.042" fill="#FFFFFF" width="6.715" height="6.715"/>
+					<rect y="8.436" fill="#FFFFFF" width="6.715" height="6.715"/>
+					<rect y="16.83" fill="#FFFFFF" width="6.715" height="6.715"/>
+					<rect x="8.394" y="16.83" fill="#FFFFFF" width="6.714" height="6.715"/>
+					<rect x="16.787" y="16.83" fill="#FFFFFF" width="6.715" height="6.715"/>
+					<rect x="16.787" y="8.436" fill="#FFFFFF" width="6.715" height="6.715"/>
+					<rect x="8.394" y="8.436" fill="#FFFFFF" width="6.714" height="6.715"/>
+					<rect x="8.394" y="0.042" fill="#FFFFFF" width="6.714" height="6.715"/>
+					<rect x="16.787" y="0.042" fill="#FFFFFF" width="6.715" height="6.715"/>
+				</svg>
+			</a>
+			<h1 class="app-header-title">AGENDA</h1>
+			<a href="/profile">
+				<svg class="header-icon-right" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.927,13.977c-11.7-3.063-9.423,9.58-9.423,9.58"/>
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.751,13.977c11.7-3.063,9.423,9.58,9.423,9.58"/>
+					<circle fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="11.751" cy="5.647" r="5.037"/>
+				</svg>
+			</a>
+		</header>
+		<main>
+			<nav class="agenda-view">
+				<ul class="agenda-view-list">
+					<a href="/"><li class="agenda-view-item agenda-view-item-active"> List </li></a>
+					<a href="/overview"><li class="agenda-view-item"> Overview </li></a>
+				</ul>
+			</nav>
+			<ul class="agenda-list">
+				{{#each dates}}
+					<li class="agenda-item">
+						<section class="agenda-main">
+							<div class="weekday-circle">
+								<span class='weekday-circle-text'>{{weekday}}</span>
+							</div>
+							<header class="agenda-item-header">
+								<h2 class="agenda-item-title"> {{month}} <strong>{{date}}</strong></h2>
+								<span class="precense {{#if listData.present}} present {{else}} absent{{/if}}"> {{#if listData.present}} Present {{else}} Absent{{/if}} </span>
+							</header>
+							<span class="ratio {{listData.value}}">{{listData.ratio}}</span>
+						</section>
+						<aside class="agenda-drawer">
+							<div class="day-info">
+								<article class="day-info-item">
+									<span class="day-info-item-title">People coming</span>
+									<span class="day-info-item-number">{{listData.peopleComing}}</span>
+								</article>
+								<article class="day-info-item">
+									<span class="day-info-item-title">Available desks</span>
+									<span class="day-info-item-number">{{listData.availableDesks}}</span>
+								</article>
+							</div>
+							{{#if listData.present}}
+								<button class="button precense-button absent-button">I'm not coming</button>
+							{{else}}
+								<button class="button precense-button present-button">I'm coming</button>
+							{{/if}}
+						</aside>
+						{{#if listData.friday}}
+							<div class="next-week-border"></div>
+						{{/if}}
+					</li>
+				{{/each}}
+			</ul>
+		</main>
+	</section>
+</template>

@@ -1,0 +1,64 @@
+<template name="agendaOverview">
+	<section class="agendaOverview">
+		<header class="app-header">
+			<a href="/">
+				<svg class="header-icon-left" id="Layer_1" x="0px" y="0px"
+				width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+					<rect x="4.509" y="2.731" fill="#FFFFFF" width="18.993" height="1.957"/>
+					<rect x="4.509" y="8.125" fill="#FFFFFF" width="18.993" height="1.956"/>
+					<rect x="4.509" y="13.519" fill="#FFFFFF" width="18.993" height="1.956"/>
+					<rect x="4.509" y="18.911" fill="#FFFFFF" width="18.993" height="1.957"/>
+					<path fill="#FFFFFF" d="M2.65,3.709c0,0.732-0.591,1.326-1.325,1.326C0.591,5.034,0,4.441,0,3.709s0.591-1.325,1.326-1.325
+					C2.06,2.384,2.65,2.976,2.65,3.709z"/>
+					<path fill="#FFFFFF" d="M2.607,9.102c0,0.709-0.571,1.283-1.281,1.283c-0.711,0-1.283-0.574-1.283-1.283
+					c0-0.708,0.571-1.281,1.283-1.281C2.036,7.821,2.607,8.394,2.607,9.102z"/>
+					<path fill="#FFFFFF" d="M2.564,14.496c0,0.709-0.571,1.282-1.281,1.282C0.571,15.779,0,15.205,0,14.496
+					c0-0.708,0.571-1.282,1.283-1.282C1.993,13.214,2.564,13.788,2.564,14.496z"/>
+					<path fill="#FFFFFF" d="M2.607,19.89c0,0.708-0.571,1.283-1.281,1.283c-0.711,0-1.283-0.575-1.283-1.283s0.571-1.281,1.283-1.281
+					C2.036,18.609,2.607,19.182,2.607,19.89z"/>
+				</svg>
+			</a>
+			<h1 class="app-header-title">AGENDA</h1>
+			<a href="/profile">
+				<svg class="header-icon-right" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.927,13.977c-11.7-3.063-9.423,9.58-9.423,9.58"/>
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.751,13.977c11.7-3.063,9.423,9.58,9.423,9.58"/>
+					<circle fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="11.751" cy="5.647" r="5.037"/>
+				</svg>
+			</a>
+		</header>
+		<main>
+			<nav class="agenda-view">
+				<ul class="agenda-view-list">
+					<a href="/"><li class="agenda-view-item"> List </li></a>
+					<a href="/overview"><li class="agenda-view-item agenda-view-item-active"> Overview </li></a>
+				</ul>
+			</nav>
+			<section class="agenda-overview">
+				<header class="agenda-overview-header">
+
+					<svg class="arrow-left" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+						<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="7.686" y1="13.942" x2="16.656" y2="4.97"/>
+						<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="16.656" y1="22.24" x2="7.686" y2="13.268"/>
+					</svg>
+
+					<h2 class="agenda-overview-title">May 2016</h2>
+					<svg class="arrow-right" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+						<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="16.656" y1="13.942" x2="7.686" y2="4.97"/>
+						<line fill="none" stroke="#000000" stroke-miterlimit="10" x1="7.686" y1="22.24" x2="16.656" y2="13.268"/>
+					</svg>
+
+
+				</header>
+				
+				<div class="agenda-blocks-container">
+					<ul class="agenda-block-list">
+						{{#each dates}}
+							<li class="agenda-block {{#if overviewData.present}} block-present {{else}} block-absent{{/if}} {{#if overviewData.weekend}} block-weekend {{/if}}">{{date}}</li>
+						{{/each}}
+					</ul>
+				</div>
+			</section>
+		</main>
+	</section>
+</template>

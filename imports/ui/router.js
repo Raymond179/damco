@@ -21,3 +21,7 @@ Router.route('/overview', {
 Router.route('/profile', {
 	template: 'profile'
 });
+
+Router.route('/settings', {
+	template: 'settings'
+});

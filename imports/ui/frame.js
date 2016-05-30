@@ -11,6 +11,7 @@ import './home.html';
 import './app/agendaList.js';
 import './app/agendaOverview.js';
 import './app/profile.js';
+import './app/settings.js';
 import './router.js';
 
 // When body template is created

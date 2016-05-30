@@ -1,5 +1,5 @@
-<template name="profile">
-	<section class="profile">
+<template name="settings">
+	<section class="settings">
 		<header class="app-header">
 			<a href="/">
 				<svg class="header-icon-left" x="0px" y="0px" width="25.334px" height="25.394px" viewBox="-1.833 -1.837 25.334 25.394" enable-background="new -1.833 -1.837 25.334 25.394" xml:space="preserve">
@@ -7,7 +7,7 @@
 					<line fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" x1="6.465" y1="10.202" x2="23.502" y2="10.202"/>
 				</svg>
 			</a>
-			<h1 class="app-header-title">PROFILE</h1>
+			<h1 class="app-header-title">SETTINGS</h1>
 			<a href="/profile">
 				<svg class="header-icon-right" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
 					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.927,13.977c-11.7-3.063-9.423,9.58-9.423,9.58"/>
@@ -17,27 +17,7 @@
 			</a>
 		</header>
 		<main>
-			<h2 class="profile-title">Erwin Van Kasteren</h2>
-			<form class="profile-form">
-				<label>
-					<span class="input-label">Name:</span>
-					<input class="profile-input" type="text" id="name" value="{{userData.name}}">
-				</label>
-				<label>
-					<span class="input-label">Username:</span>
-					<input class="profile-input" type="text" id="username" value="{{userData.username}}">
-				</label>
-				<label>
-					<span class="input-label">Password:</span>
-					<input class="profile-input" type="password" id="password">
-				</label>
-				<label>
-					<span class="input-label">Desk:</span>
-					<input class="profile-input" type="text" id="desk" value="Flex" disabled>
-				</label>
-				<input class="button profile-button" type="submit" value="Save changes">
-				<a href="#" class="logout">Logout</a>
-			</form>
+
 		</main>
 	</section>
 </template>

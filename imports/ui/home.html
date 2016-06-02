@@ -1,6 +1,10 @@
 <template name="home">
 	{{#if currentUser}}
-		{{> agendaList}}
+		{{#if admin}}
+			{{> employees}}
+		{{else}}
+			{{> agendaList}}
+		{{/if}}
 	{{else}}
 		{{> login}}
 	{{/if}}

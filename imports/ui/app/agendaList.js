@@ -5,6 +5,7 @@ import { Desks } from '../../api/server.js';
 
 import './agendaList.html'
 
+// Agendalist helpers
 Template.agendaList.helpers({
 	dates() {
 		// Get today's month year and date and render the rest of this month plus the next
@@ -25,7 +26,7 @@ Template.agendaList.helpers({
 	},
 	'listData': function() {
 		// Get number of people with flex desk and number of absents
-		var flexUsers = Meteor.users.find({},{'profile.desk': 'flex'}).fetch().length;
+		var flexUsers = Meteor.users.find({'profile.desk': 'flex'}).fetch().length;
 		var absents = this.absent.length;
 		var peopleComing = flexUsers - absents;
 		// Get number of flex desks and number of extra flex desks

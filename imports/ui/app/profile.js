@@ -10,9 +10,11 @@ Template.profile.helpers({
 	'userData': function() {
 		var username = Meteor.user() && Meteor.user().username;
 		var name = Meteor.user() && Meteor.user().profile && Meteor.user().profile.name;
+		var desk = Meteor.user() && Meteor.user().profile && Meteor.user().profile.desk;
 		return {
 			username: username,
-			name: name
+			name: name,
+			desk: desk
 		};
 	}
 })

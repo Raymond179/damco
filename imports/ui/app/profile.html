@@ -17,23 +17,23 @@
 			</a>
 		</header>
 		<main>
-			<h2 class="profile-title">Erwin Van Kasteren</h2>
+			<h2 class="form-title">{{userData.name}}</h2>
 			<form class="profile-form">
 				<label>
 					<span class="input-label">Name:</span>
-					<input class="profile-input" type="text" id="name" value="{{userData.name}}">
+					<input class="form-input" type="text" id="name" value="{{userData.name}}">
 				</label>
 				<label>
 					<span class="input-label">Username:</span>
-					<input class="profile-input" type="text" id="username" value="{{userData.username}}">
+					<input class="form-input" type="text" id="username" value="{{userData.username}}">
 				</label>
 				<label>
 					<span class="input-label">Password:</span>
-					<input class="profile-input" type="password" id="password">
+					<input class="form-input" type="password" id="password">
 				</label>
 				<label>
 					<span class="input-label">Desk:</span>
-					<input class="profile-input" type="text" id="desk" value="Flex" disabled>
+					<input class="form-input" type="text" id="desk" value="{{userData.desk}}" disabled>
 				</label>
 				<input class="button profile-button" type="submit" value="Save changes">
 				<a href="#" class="logout">Logout</a>

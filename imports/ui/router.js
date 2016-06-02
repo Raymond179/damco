@@ -25,3 +25,11 @@ Router.route('/profile', {
 Router.route('/settings', {
 	template: 'settings'
 });
+
+Router.route('/employees', {
+	template: 'employees'
+});
+
+Router.route('/adminSettings', {
+	template: 'adminSettings'
+});

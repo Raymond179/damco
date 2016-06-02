@@ -23,6 +23,13 @@ h2 {
 	margin:0;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+	border-radius: 0;
+	-webkit-appearance: none;
+}
+
 main {
 	padding: 5%;
 }
@@ -126,12 +133,12 @@ main {
 	border-bottom: 4px solid #00594b;
 	text-align: center;
 	color: white;
-	font-weight: 100;
-	padding: 10px;
+	padding: 15px;
 }
 
 .app-header-title {
 	font-size: 1.5em;
+	font-weight: 400;
 }
 
 .header-icon-left {
@@ -163,7 +170,7 @@ main {
 	float: left;
 	text-align: center;
 	list-style-type: none;
-    padding: 2px;
+    padding: 4px;
 }
 
 .agenda-view-list a {
@@ -211,7 +218,7 @@ main {
 
 .precense {
 	font-size: 0.9em;
-	font-weight: 100;
+	font-weight: 400;
 }
 
 .weekday-circle {
@@ -227,7 +234,7 @@ main {
 }
 
 .weekday-circle-text {
-	font-weight: 100;
+	font-weight: 400;
 	color: #00594b;
 	font-size: 0.9em;
 }
@@ -265,18 +272,7 @@ main {
     opacity: 0;
     visibility: hidden;
     transition: height 0.6s, opacity 0.6s;*/
-    transition: background 0.7s;
 	display: none;
-}
-
-.drawer-active {
-	width: 110%;
-    margin-left: -5%;
-    background: white;
-    /*visibility: visible;
-    height: 300px;
-    opacity: 1;*/
-    display: block;
 }
 
 .day-info {
@@ -311,6 +307,9 @@ main {
 	clear: both;
 	width: 50%;
 	cursor: pointer;
+	border-radius: 0;
+	font-size: 0.9em;
+	-webkit-appearance: none;
 }
 
 .next-week-border {
@@ -320,18 +319,20 @@ main {
     margin-left: -5%;
 }
 
-/* PROFILE */
+/* PROFILE/ADMIN FORM */
 
-.profile-title {
+.form-title {
 	font-weight: 400;
 	text-align: center;
 	font-size: 1.3em;
 }
 
+.admin-form,
 .profile-form {
 	margin-top: 40px;
 }
 
+.admin-form label,
 .profile-form label {
 	display: block;
 	padding: 12px 0;
@@ -348,7 +349,24 @@ main {
     padding: 10px;
 }
 
-.profile-input {
+.input-label-admin {
+	width: 51%;
+    display: block;
+    float: left;
+    color: #00594b;
+    font-weight: 700;
+    padding: 10px;
+}
+
+#registrationKey,
+#flexEmployees,
+#fixedEmployees,
+#adminPassword,
+#flexDesks {
+	width: 49%;
+}
+
+.form-input {
 	width: 65%;
 	display: block;
 	float: left;
@@ -359,14 +377,16 @@ main {
 	font-weight: 100;
 }
 
-.profile-input:focus {
+.form-input:focus {
 	outline: none;
 }
 
-#desk {
-	color: #A6A6A6;
+input[disabled] {
+	color: #7F7F7F;
+	-webkit-text-fill-color:#7F7F7F;
 }
 
+.admin-button,
 .profile-button {
 	margin-top: 40px;
 }
@@ -444,6 +464,158 @@ main {
 	background: grey;
 }
 
+/* SETTINGS */
+
+.settings-title {
+	font-weight: 400;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.default-form {
+	text-align: center;
+}
+
+.weekday-fieldset {
+	border: none;
+}
+
+.month-fieldset {
+	width: 300px;
+    margin: 0 auto;
+    border: 0;
+}
+
+.weekday-label {
+	margin: 0 8px;
+    display: inline-block;
+}
+
+.weekday-label input[type="checkbox"] {
+	display: block;
+	margin: 0 auto;
+	width: 20px;
+    height: 20px;
+	margin-bottom: 5px;
+}
+
+.fieldset-column {
+	width:50%;
+	float: left;
+	padding-left: 3%;
+}
+
+.month-label {
+	display: block;
+	text-align: left;
+	margin-top: 5px;
+}
+
+.month-label input[type="checkbox"] {
+	width:20px;
+	height: 20px;
+    margin-bottom: 5px;
+}
+
+.transparent-button {
+	background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+/* EMPLOYEES */
+
+.employee-list {
+	padding:0;
+}
+
+.employee-item {
+	width: 100%;
+	border-bottom: 1px solid #cecece;
+	list-style-type: none;
+	clear: both;
+	cursor: pointer;
+}
+
+.employee-main {
+	padding: 13px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.employee-name {
+    font-size: 1.2em;
+    font-weight: 400;
+    float: left;
+    margin-left: 40px;
+}
+
+.employee-drawer {
+	width: 110%;
+    margin-left: -5%;
+    padding:5%;
+	display: none;
+}
+
+/* --Cross */
+.cross {
+	width: 32px;
+	height: 32px;
+	opacity: 0.3;
+	background: transparent;
+	float: left;
+	border: 0;
+}
+
+.cross:before, .cross:after {
+	position: absolute;
+	top: 12px;
+	content: ' ';
+	height: 33px;
+	width: 2px;
+	background-color: #333;
+}
+
+.cross:before {
+	transform: rotate(45deg);
+}
+
+.cross:after {
+	transform: rotate(-45deg);
+}
+
+/* --Desk toggle */
+.desk-toggle {
+    width: 170px;
+    margin: 0 auto;
+	overflow: hidden;
+}
+
+.desk-toggle-flex {
+	border-top: 1px solid #CECECE;
+	border-bottom: 1px solid #CECECE;
+	border-left: 1px solid #CECECE;
+	border-right: 0;
+}
+
+.desk-toggle-fixed {
+	border-top: 1px solid #CECECE;
+	border-bottom: 1px solid #CECECE;
+	border-right: 1px solid #CECECE;
+	border-left: 0;
+}
+
+.desk-toggle-flex,
+.desk-toggle-fixed {
+	background: transparent;
+	float: left;
+	width:50%;
+	padding: 10px 20px;
+	font-size: 0.9em;
+}
+
 /* Javascript classes */
 
 .hide {
@@ -452,4 +624,20 @@ main {
 
 .show {
 	display: block;
+}
+
+.drawer-active {
+	width: 110%;
+    margin-left: -5%;
+    background: white;
+	padding: 13px 5%;
+    /*visibility: visible;
+    height: 300px;
+    opacity: 1;*/
+    display: block;
+}
+
+.toggle-active {
+	background: #00b89c;
+	color: white;
 }

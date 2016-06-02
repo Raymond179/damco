@@ -17,7 +17,91 @@
 			</a>
 		</header>
 		<main>
-
+			<section class="main-settings">
+				<h2 class="settings-title">I'm not at the office</h2>
+				<form class="default-form">
+					<p>Every</p>
+					<fieldset class="weekday-fieldset">
+						<label class="weekday-label">
+							<input type="checkbox" value="mon" checked="{{#if checkWeekdays 'mon'}}checked{{/if}}">
+							<span>Mon</span>
+						</label>
+						<label class="weekday-label">
+							<input type="checkbox" value="tues" checked="{{#if checkWeekdays 'tues'}}checked{{/if}}">
+							<span>Tues</span>
+						</label>
+						<label class="weekday-label">
+							<input type="checkbox" value="wed" checked="{{#if checkWeekdays 'wed'}}checked{{/if}}">
+							<span>Wed</span>
+						</label>
+						<label class="weekday-label">
+							<input type="checkbox" value="thurs" checked="{{#if checkWeekdays 'thurs'}}checked{{/if}}">
+							<span>Thurs</span>
+						</label>
+						<label class="weekday-label">
+							<input type="checkbox" value="fri" checked="{{#if checkWeekdays 'fri'}}checked{{/if}}">
+							<span>Fri</span>
+						</label>
+					</fieldset>
+					<p>of</p>
+					<fieldset class="month-fieldset">
+						<div class="fieldset-column">
+							<label class="month-label">
+								<input type="checkbox" value="0" checked="{{#if checkMonths '0'}}checked{{/if}}">
+								<span> January </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="1" checked="{{#if checkMonths '1'}}checked{{/if}}">
+								<span> February </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="2" checked="{{#if checkMonths '2'}}checked{{/if}}">
+								<span> March </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="3" checked="{{#if checkMonths '3'}}checked{{/if}}">
+								<span> April </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="4" checked="{{#if checkMonths '4'}}checked{{/if}}">
+								<span> May </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="5" checked="{{#if checkMonths '5'}}checked{{/if}}">
+								<span> June </span>
+							</label>
+						</div>
+						<div class="fieldset-column">
+							<label class="month-label">
+								<input type="checkbox" value="6" checked="{{#if checkMonths '6'}}checked{{/if}}">
+								<span> July </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="7" checked="{{#if checkMonths '7'}}checked{{/if}}">
+								<span> August </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="8" checked="{{#if checkMonths '8'}}checked{{/if}}">
+								<span> September </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="9" checked="{{#if checkMonths '9'}}checked{{/if}}">
+								<span> October </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="10" checked="{{#if checkMonths '10'}}checked{{/if}}">
+								<span> November </span>
+							</label>
+							<label class="month-label">
+								<input type="checkbox" value="11" checked="{{#if checkMonths '11'}}checked{{/if}}">
+								<span> December </span>
+							</label>
+						</div>
+					</fieldset>
+					<input class="button settings-button" type="submit" value="Save changes">
+					<input class="transparent-button reset" type="button" value="Reset precense">
+				</form>
+			</section>
 		</main>
 	</section>
 </template>

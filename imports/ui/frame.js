@@ -12,6 +12,8 @@ import './app/agendaList.js';
 import './app/agendaOverview.js';
 import './app/profile.js';
 import './app/settings.js';
+import './app/employees.js';
+import './app/adminSettings.js';
 import './router.js';
 
 // When body template is created
@@ -32,12 +34,20 @@ Meteor.subscribe("dates", function() {
 		Meteor.call('dates.insert',{year: nextYear, dates: Template.frame.__helpers.get('getData')(nextYear)});
 	};
 });
+// Global helpers
+Template.registerHelper('admin', function() {
+	var status = Meteor.user().profile.desk;
+	if (status === 'admin') {
+		return true;
+	} else {
+		return false;
+	};
+});
 // Frame Events
 Template.frame.events({
 	'click .app-header'(event) {
 		// Meteor.call('dates.remove');
-		// Meteor.call('dates.insert',{year: 2016, dates: Template.frame.__helpers.get('getData')(2016)});
-
+		// Meteor.call('dates.insert',{year: thisYear, dates: Template.frame.__helpers.get('getData')(thisYear)});
 	}
 });
 // Frame Helpers

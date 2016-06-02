@@ -36,5 +36,30 @@ Meteor.methods({
 	},
 	'updatePassword'(password) {
 		Accounts.setPassword(Meteor.userId(), password);
+	},
+	'defaultPrecense'(year, modifier) {
+		Dates.update({year: year},modifier);
+	},
+	'settingsData'(weekdays, months) {
+		Meteor.users.update({_id: Meteor.userId()}, 
+			{$set:{
+				"profile.settings.weekdays": weekdays,
+				"profile.settings.months": months
+			}}
+		);
+	},
+	'updateAdmin'(flexDesks, registrationKey) {
+		Desks.update({name: 'desksInfo'}, 
+			{$set:{
+				"flexDesks": flexDesks,
+				"registrationKey": registrationKey
+			}}
+		)
+	},
+	'deskChange'(id, desk) {
+		Meteor.users.update({_id: id}, {$set:{"profile.desk": desk}});
+	},
+	'removeUser'(id) {
+		Meteor.users.remove({_id: id});
 	}
 });

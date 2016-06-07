@@ -46,8 +46,8 @@ Template.registerHelper('admin', function() {
 // Frame Events
 Template.frame.events({
 	'click .app-header'(event) {
-		// Meteor.call('dates.remove');
-		// Meteor.call('dates.insert',{year: thisYear, dates: Template.frame.__helpers.get('getData')(thisYear)});
+		Meteor.call('dates.remove');
+		Meteor.call('dates.insert',{year: 2016, dates: Template.frame.__helpers.get('getData')(2016)});
 	}
 });
 // Frame Helpers
@@ -73,7 +73,8 @@ Template.frame.helpers({
 						monthNumber: newDate.getMonth(),
 						year: newDate.getFullYear(),
 						absent: [],
-						extraFlexDesks: []
+						extraFlexDesks: [],
+						guests: {}
 					}
 				);
 				date.setDate(date.getDate() + 1);

@@ -1,5 +1,18 @@
 <template name="frame">
 	<body>
+		{{#if message.visible}}
+			<section class="message">
+				<p>{{message.message}}</p>
+				{{#if message.confirmation}}
+					<div class="confirmation">
+						<button class="button no">No</button>
+						<button class="button yes {{message.name}}-yes">Yes</button>
+					</div>
+				{{else}}
+					<button class="button ok {{message.name}}-ok">Ok</button>
+				{{/if}}
+			</section>
+		{{/if}}
 		{{> yield}}
 	</body>
 </template>

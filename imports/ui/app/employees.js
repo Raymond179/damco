@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import { Dates } from '../../api/server.js';
 import { Desks } from '../../api/server.js';
@@ -44,6 +45,10 @@ Template.employees.events({
 		Meteor.call('deskChange', this._id, 'fixed');
 	},
 	'click .cross'(event) {
-		Meteor.call('removeUser', this._id)
+		Session.set('messageVisible', true);
+		Session.set('messageConfirmation', true);
+		Session.set('messageText', 'Are you sure you want to delete this user?');
+		Session.set('messageName', 'delete-user');
+		Session.set('userId', this._id);
 	}
 });

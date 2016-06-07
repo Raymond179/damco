@@ -1,3 +1,6 @@
+import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
+
 import { Desks } from '../api/server.js';
 
 import './register.html';
@@ -21,9 +24,21 @@ Template.register.events({
 					name: name,
 					desk: 'flex'
 				}
+			}, function(err) {
+				if (err) {
+					Session.set('messageVisible', true);
+					Session.set('messageConfirmation', false);
+					Session.set('messageText', err.reason);
+				} else {
+					Router.go('/');
+				};
 			});
 
-			Router.go('/');
+			
+		} else {
+			Session.set('messageVisible', true);
+			Session.set('messageConfirmation', false);
+			Session.set('messageText', 'Registration key is incorrect');
 		};
 
 		

@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import { Dates } from '../../api/server.js';
 import { Desks } from '../../api/server.js';
@@ -30,11 +31,18 @@ Template.profile.events({
 
 		// Check if field has changed
 		if (password !== '') {
-			Meteor.call('updatePassword', password);
-			Router.go('/');
+			Session.set('messageVisible', true);
+			Session.set('messageConfirmation', true);
+			Session.set('messageText', 'Are you sure you want to reset your password?');
+			Session.set('messageName', 'change-password');
+			Session.set('password', password);
 		};
 		// Update username and name
 		Meteor.call('updateName', name, username);
+
+		Session.set('messageVisible', true);
+		Session.set('messageConfirmation', false);
+		Session.set('messageText', 'Changes saved!');
 	},
 	'click .logout'(event) {
 		event.preventDefault();

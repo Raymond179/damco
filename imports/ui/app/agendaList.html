@@ -54,6 +54,10 @@
 							{{else}}
 								<button class="button precense-button present-button">I'm coming</button>
 							{{/if}}
+							<form class="guests">
+								<span>Guests</span>
+								<input class="guests-number" type="number" max="3" min="0" value="{{listData.guests}}">
+							</form>
 						</aside>
 						{{#if listData.friday}}
 							<div class="next-week-border"></div>

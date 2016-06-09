@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import { Dates } from '../../api/server.js';
 import { Desks } from '../../api/server.js';
@@ -33,8 +34,22 @@ Template.agendaList.helpers({
 		var flexDesks = Desks.findOne({name: 'desksInfo'}) && Desks.findOne({name: 'desksInfo'}).flexDesks;
 		var extraFlexDesks = this.extraFlexDesks.length;
 		var availableDesks = flexDesks + extraFlexDesks;
+		// Get total total number of guests and user guests
+		var thisDate = Dates.findOne({year: this.year}).dates[this.monthNumber][this.date-1];
+		var guests = thisDate.guests;
+		var userGuests = guests[Meteor.userId()];
+		function sum(obj) {
+			var sum = 0;
+			for(var el in obj) {
+				if(obj.hasOwnProperty(el)) {
+					sum += parseFloat(obj[el]);
+				}
+			}
+			return sum;
+		} // Source: http://stackoverflow.com/questions/16449295/a-concise-way-to-sum-the-values-of-a-javascript-object
+		var totalGuests = sum(guests);
 		// Substract available desks with coming people and return
-		var ratio = availableDesks - peopleComing;
+		var ratio = availableDesks - peopleComing - totalGuests;
 		// Check if positive or negative
 		if (ratio < 0) {
 			var value = 'negative';
@@ -43,8 +58,7 @@ Template.agendaList.helpers({
 			var ratio = '+'+ratio;
 		};
 		// Check if absent or present
-		var thisDate = Dates.findOne({year: this.year}).dates[this.monthNumber][this.date-1].absent;
-		if (thisDate.indexOf(Meteor.userId()) > -1) {
+		if (thisDate.absent.indexOf(Meteor.userId()) > -1) {
 			var precense = false;
 		} else {
 			var precense = true;
@@ -62,7 +76,9 @@ Template.agendaList.helpers({
 			ratio: ratio,
 			value: value,
 			present: precense,
-			friday: friday
+			friday: friday,
+			guests: userGuests,
+			totalGuests: totalGuests
 		};
 	}
 });
@@ -76,6 +92,7 @@ Template.agendaList.events({
 		drawer.classList.toggle('drawer-active');
 	},
 	'click .absent-button'(event) {
+		Session.set('loading', true);
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
@@ -83,15 +100,32 @@ Template.agendaList.events({
 		var setModifier = { $push: {} };
 		setModifier.$push['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
 
-		Meteor.call('insertPrecense', year, setModifier);
+		setTimeout(function() {Meteor.call('insertPrecense', year, setModifier, function(){
+			Session.set('loading', false);
+		})}, 100)
+		
 	},
 	'click .present-button'(event) {
+		Session.set('loading', true);
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
 		
 		var setModifier = { $pull: {} };
 		setModifier.$pull['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
+
+		setTimeout(function() {Meteor.call('insertPrecense', year, setModifier, function(){
+			Session.set('loading', false);
+		})}, 100)
+	},
+	'change .guests-number'(event) {
+		var date = this.date -1;
+		var month = this.monthNumber;
+		var year = this.year;
+		var value = parseInt(event.currentTarget.value);
+		
+		var setModifier = { $set: {} };
+		setModifier.$set['dates.'+month+'.'+date+'.guests.'+Meteor.userId()] = value;
 
 		Meteor.call('insertPrecense', year, setModifier);
 	}

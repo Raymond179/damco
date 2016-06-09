@@ -48,6 +48,13 @@ Meteor.methods({
 			}}
 		);
 	},
+	'resetSettingsData'() {
+		Meteor.users.update({_id: Meteor.userId()}, 
+			{$set:{
+				"profile.settings": {}
+			}}
+		);
+	},
 	'updateAdmin'(flexDesks, registrationKey) {
 		Desks.update({name: 'desksInfo'}, 
 			{$set:{

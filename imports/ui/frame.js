@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import { Dates } from '../api/server.js';
 import { Desks } from '../api/server.js';
@@ -14,6 +15,8 @@ import './app/profile.js';
 import './app/settings.js';
 import './app/employees.js';
 import './app/adminSettings.js';
+import './loading.html';
+import './nothing.html';
 import './router.js';
 
 // When body template is created
@@ -43,11 +46,86 @@ Template.registerHelper('admin', function() {
 		return false;
 	};
 });
+Template.registerHelper('message', function() {
+	var visible = Session.get('messageVisible');
+	if (visible == null) {
+		var visible = false;
+	};
+	return {
+		message: Session.get('messageText'),
+		confirmation: Session.get('messageConfirmation'),
+		visible: visible,
+		name: Session.get('messageName')
+	}
+});
+Template.registerHelper('loading', function() {
+	return Session.get('loading');
+});
+// Global events
+Template.body.events({
+	'click .no'(event) {
+		Session.set('messageVisible', false);
+	},
+	'click .ok'(event) {
+		Session.set('messageVisible', false);
+	},
+	'click .yes'(event) {
+		Session.set('messageVisible', false);
+	},
+	'click .delete-user-yes'(event) {
+		Meteor.call('removeUser', Session.get('userId'));
+	},
+	'click .change-password-yes'(event) {
+		Meteor.call('updatePassword', Session.get('password'));
+		Router.go('/');
+	},
+	'click .reset-precense-yes'(event) {
+		// Put all dates into one array
+		var date = new Date;
+		var thisYear = date.getFullYear();
+		var months = [];
+		for (var i = 0; i < 12; i++) {
+			var month = Dates.findOne({year:thisYear}).dates[i];
+			months.push.apply(months,month);
+		}
+		// Filter dates on weekday
+		var weekdayString = '';
+		var checkedWeekdays = ['mon', 'tues', 'wed', 'thurs', 'fri']
+		for (var i = 0; i < checkedWeekdays.length; i++) {
+			if (i === (checkedWeekdays.length -1)) {
+				weekdayString+='(obj.weekday === "'+checkedWeekdays[i]+'")';
+			} else {
+				weekdayString+='(obj.weekday === "'+checkedWeekdays[i]+'") || ';
+			};
+		};
+
+		var defaultDays = months.filter(function(obj) {
+		    return eval(weekdayString);
+		});
+		// Reset data
+		for (var i = 0; i < defaultDays.length; i++) {
+			var month = defaultDays[i].monthNumber;
+			var year = defaultDays[i].year;
+			var date = defaultDays[i].date -1;
+
+			var thisDate = Dates.findOne({year: year}).dates[month][date].absent;
+			if (thisDate.indexOf(Meteor.userId()) > -1) {
+				var setModifier = { $pull: {} };
+				setModifier.$pull['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
+
+				Meteor.call('defaultPrecense', year, setModifier);
+			};	
+		};
+		// Reset settings data
+		Meteor.call('resetSettingsData');
+	}
+});
 // Frame Events
 Template.frame.events({
 	'click .app-header'(event) {
 		// Meteor.call('dates.remove');
-		// Meteor.call('dates.insert',{year: thisYear, dates: Template.frame.__helpers.get('getData')(thisYear)});
+		// Meteor.call('dates.insert',{year: 2016, dates: Template.frame.__helpers.get('getData')(2016)});
+		// Session.set('loader', true)
 	}
 });
 // Frame Helpers
@@ -73,7 +151,8 @@ Template.frame.helpers({
 						monthNumber: newDate.getMonth(),
 						year: newDate.getFullYear(),
 						absent: [],
-						extraFlexDesks: []
+						extraFlexDesks: [],
+						guests: {}
 					}
 				);
 				date.setDate(date.getDate() + 1);

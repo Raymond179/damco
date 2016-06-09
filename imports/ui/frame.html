@@ -13,6 +13,14 @@
 				{{/if}}
 			</section>
 		{{/if}}
+
+
+		{{> yield "loading"}}
+		
+		{{#if loading}}
+			{{> loading}}
+		{{/if}}
+		
 		{{> yield}}
 	</body>
 </template>

@@ -23,6 +23,7 @@ h2 {
 	margin:0;
 }
 
+input[type="number"],
 input[type="text"],
 input[type="password"],
 input[type="submit"] {
@@ -667,6 +668,88 @@ input[disabled] {
 	width: 70px;
     margin: 10px 20px;
 }
+
+/* LOADER */
+
+.loader-container {
+	position: fixed;
+    background: rgba(0,0,0, 0.5);
+    padding: 30px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    height: 100%;
+}
+
+.loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100px;
+	height: 80px;
+}
+
+.gear {
+  position: absolute;
+  z-index: -10;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  -webkit-animation: spin 5s infinite;
+          animation: spin 5s infinite;
+}
+
+.two {
+  left: 40px;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin-reverse 5s infinite;
+          animation: spin-reverse 5s infinite;
+}
+
+.three {
+  top: 45px;
+  left: -10px;
+  width: 60px;
+  height: 60px;
+}
+
+@-webkit-keyframes spin {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  50% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin-reverse {
+  50% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  50% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+/* SOURCE: https://codepen.io/jonitrythall/pen/ojKgdx */
+
 
 /* Javascript classes */
 

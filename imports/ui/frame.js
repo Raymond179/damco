@@ -15,6 +15,8 @@ import './app/profile.js';
 import './app/settings.js';
 import './app/employees.js';
 import './app/adminSettings.js';
+import './loading.html';
+import './nothing.html';
 import './router.js';
 
 // When body template is created
@@ -45,12 +47,19 @@ Template.registerHelper('admin', function() {
 	};
 });
 Template.registerHelper('message', function() {
+	var visible = Session.get('messageVisible');
+	if (visible == null) {
+		var visible = false;
+	};
 	return {
 		message: Session.get('messageText'),
 		confirmation: Session.get('messageConfirmation'),
-		visible: Session.get('messageVisible'),
+		visible: visible,
 		name: Session.get('messageName')
 	}
+});
+Template.registerHelper('loading', function() {
+	return Session.get('loading');
 });
 // Global events
 Template.body.events({
@@ -116,7 +125,7 @@ Template.frame.events({
 	'click .app-header'(event) {
 		// Meteor.call('dates.remove');
 		// Meteor.call('dates.insert',{year: 2016, dates: Template.frame.__helpers.get('getData')(2016)});
-		
+		// Session.set('loader', true)
 	}
 });
 // Frame Helpers

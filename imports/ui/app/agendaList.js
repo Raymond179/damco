@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Session } from 'meteor/session';
 
 import { Dates } from '../../api/server.js';
 import { Desks } from '../../api/server.js';
@@ -91,6 +92,7 @@ Template.agendaList.events({
 		drawer.classList.toggle('drawer-active');
 	},
 	'click .absent-button'(event) {
+		Session.set('loading', true);
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
@@ -98,9 +100,13 @@ Template.agendaList.events({
 		var setModifier = { $push: {} };
 		setModifier.$push['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
 
-		Meteor.call('insertPrecense', year, setModifier);
+		setTimeout(function() {Meteor.call('insertPrecense', year, setModifier, function(){
+			Session.set('loading', false);
+		})}, 100)
+		
 	},
 	'click .present-button'(event) {
+		Session.set('loading', true);
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
@@ -108,7 +114,9 @@ Template.agendaList.events({
 		var setModifier = { $pull: {} };
 		setModifier.$pull['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
 
-		Meteor.call('insertPrecense', year, setModifier);
+		setTimeout(function() {Meteor.call('insertPrecense', year, setModifier, function(){
+			Session.set('loading', false);
+		})}, 100)
 	},
 	'change .guests-number'(event) {
 		var date = this.date -1;

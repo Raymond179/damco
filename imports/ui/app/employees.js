@@ -33,6 +33,7 @@ Template.employees.helpers({
 // Employees Events
 Template.employees.events({
 	'click .employee-main'(event) {
+		event.preventDefault();
 		var drawer = event.currentTarget.parentElement.querySelector('.employee-drawer');
 		var main = event.currentTarget;
 		main.classList.toggle('drawer-active');

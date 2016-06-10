@@ -142,21 +142,23 @@ main {
 	padding: 15px;
 }
 
+.app-header a {
+	position: absolute;
+    top: 5px;
+    padding: 10px;
+}
+
+.app-header a:first-child {
+	left: 10px;
+}
+
+.app-header a:nth-of-type(2) {
+	right: 10px;
+}
+
 .app-header-title {
 	font-size: 1.5em;
 	font-weight: 400;
-}
-
-.header-icon-left {
-	position: absolute;
-	left: 20px;
-	top: 15px;
-}
-
-.header-icon-right {
-	position: absolute;
-	right: 20px;
-	top: 15px;
 }
 
 /* AGENDA VIEW */
@@ -567,6 +569,8 @@ input[disabled] {
 	padding: 13px 0;
 	position: relative;
 	overflow: hidden;
+	display: block;
+	color: black;
 }
 
 .employee-name {

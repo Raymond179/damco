@@ -46,21 +46,21 @@ Template.registerHelper('admin', function() {
 		return false;
 	};
 });
-Template.registerHelper('message', function() {
-	var visible = Session.get('messageVisible');
-	if (visible == null) {
-		var visible = false;
-	};
-	return {
-		message: Session.get('messageText'),
-		confirmation: Session.get('messageConfirmation'),
-		visible: visible,
-		name: Session.get('messageName')
-	}
-});
-Template.registerHelper('loading', function() {
-	return Session.get('loading');
-});
+// Template.registerHelper('message', function() {
+// 	var visible = Session.get('messageVisible');
+// 	if (visible == null) {
+// 		var visible = false;
+// 	};
+// 	return {
+// 		message: Session.get('messageText'),
+// 		confirmation: Session.get('messageConfirmation'),
+// 		visible: visible,
+// 		name: Session.get('messageName')
+// 	}
+// });
+// Template.registerHelper('loading', function() {
+// 	return Session.get('loading');
+// });
 // Global events
 Template.body.events({
 	'click .no'(event) {

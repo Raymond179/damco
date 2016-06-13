@@ -17,7 +17,7 @@ Template.adminSettings.helpers({
 			fixedEmployees: fixedEmployees,
 			flexDesks: flexDesks,
 			registrationKey: registrationKey
-		}
+		};
 	}
 })
 

@@ -77,6 +77,9 @@ Template.body.events({
 	},
 	'click .change-password-yes'(event) {
 		Meteor.call('updatePassword', Session.get('password'));
+			Session.set('messageVisible', true);
+			Session.set('messageConfirmation', false);
+			Session.set('messageText', 'Changes saved! Please login with your new password');
 		Router.go('/');
 	},
 	'click .reset-precense-yes'(event) {

@@ -25,10 +25,10 @@
 			<ul class="employee-list">
 				{{#each employees}}
 					<li class="employee-item">
-						<section class="employee-main">
+						<a href="/" class="employee-main">
 							<button class="cross"></button>
 							<h2 class="employee-name">{{employeeData.name}}</h2>
-						</section>
+						</a>
 						<aside class="employee-drawer">
 							<div class="desk-toggle">
 								<button class="desk-toggle-flex {{#if employeeData.flex}} toggle-active {{/if}}">Flex</button>

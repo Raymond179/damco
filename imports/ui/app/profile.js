@@ -36,13 +36,15 @@ Template.profile.events({
 			Session.set('messageText', 'Are you sure you want to reset your password?');
 			Session.set('messageName', 'change-password');
 			Session.set('password', password);
+		} else {
+			Session.set('messageVisible', true);
+			Session.set('messageConfirmation', false);
+			Session.set('messageText', 'Changes saved!');
 		};
 		// Update username and name
 		Meteor.call('updateName', name, username);
 
-		Session.set('messageVisible', true);
-		Session.set('messageConfirmation', false);
-		Session.set('messageText', 'Changes saved!');
+	
 	},
 	'click .logout'(event) {
 		event.preventDefault();

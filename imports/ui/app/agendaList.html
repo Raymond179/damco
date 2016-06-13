@@ -28,7 +28,7 @@
 			<ul class="agenda-list">
 				{{#each dates}}
 					<li class="agenda-item">
-						<section class="agenda-main">
+						<a href="/" class="agenda-main">
 							<div class="weekday-circle">
 								<span class='weekday-circle-text'>{{weekday}}</span>
 							</div>
@@ -37,7 +37,7 @@
 								<span class="precense {{#if listData.present}} present {{else}} absent{{/if}}"> {{#if listData.present}} Present {{else}} Absent{{/if}} </span>
 							</header>
 							<span class="ratio {{listData.value}}">{{listData.ratio}}</span>
-						</section>
+						</a>
 						<aside class="agenda-drawer">
 							<div class="day-info">
 								<article class="day-info-item">

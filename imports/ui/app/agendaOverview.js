@@ -56,7 +56,8 @@ Template.agendaOverview.helpers({
 });
 
 Template.agendaOverview.events({
-	'click .agenda-block'(event) {
+	'click .block-text'(event) {
+		event.preventDefault();
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
@@ -74,6 +75,7 @@ Template.agendaOverview.events({
 		}
 	},
 	'click .arrow-right'(event) {
+		event.preventDefault();
 		// Get next month
 		var givenMonth = Session.get('givenMonth') + 1;
 		var givenYear = Session.get('givenYear');
@@ -88,6 +90,7 @@ Template.agendaOverview.events({
 		
 	},
 	'click .arrow-left'(event) {
+		event.preventDefault();
 		// Get previous month
 		var givenMonth = Session.get('givenMonth') - 1;
 		var givenYear = Session.get('givenYear');

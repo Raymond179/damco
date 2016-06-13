@@ -270,6 +270,9 @@ main {
     padding-top: 13px;
     padding-bottom: 13px;
 	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	display: block;
 }
 
 .agenda-drawer {
@@ -473,9 +476,16 @@ input[disabled] {
 	height: 40px;
 	margin: 1px;
 	color: white;
-	padding: 10px;
 	text-align: center;
 	cursor: pointer;
+}
+
+.agenda-block a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	color: white;
 }
 
 .block-present {

@@ -36,7 +36,7 @@ Template.employees.events({
 		event.preventDefault();
 		var drawer = event.currentTarget.parentElement.querySelector('.employee-drawer');
 		var main = event.currentTarget;
-		main.classList.toggle('drawer-active');
+		main.classList.toggle('main-active');
 		drawer.classList.toggle('drawer-active');
 	},
 	'click .desk-toggle-flex'(event) {

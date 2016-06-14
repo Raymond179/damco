@@ -39,25 +39,28 @@
 							<span class="ratio {{listData.value}}">{{listData.ratio}}</span>
 						</a>
 						<aside class="agenda-drawer">
-							<div class="day-info">
-								<article class="day-info-item">
-									<span class="day-info-item-title">People coming</span>
-									<span class="day-info-item-number">{{listData.peopleComing}}</span>
-								</article>
-								<article class="day-info-item">
-									<span class="day-info-item-title">Available desks</span>
-									<span class="day-info-item-number">{{listData.availableDesks}}</span>
-								</article>
+							<div class="agenda-drawer-inner">
+								<div class="day-info">
+									<article class="day-info-item">
+										<span class="day-info-item-title">People coming</span>
+										<span class="day-info-item-number">{{listData.peopleComing}}</span>
+									</article>
+									<article class="day-info-item">
+										<span class="day-info-item-title">Available desks</span>
+										<span class="day-info-item-number">{{listData.availableDesks}}</span>
+									</article>
+								</div>
+								{{#if listData.present}}
+									<button class="button precense-button absent-button">I'm not coming</button>
+								{{else}}
+									<button class="button precense-button present-button">I'm coming</button>
+								{{/if}}
+								<form class="guests">
+									<span>Guests</span>
+									<input class="guests-number" type="number" max="3" min="0" value="{{listData.guests}}">
+								</form>
 							</div>
-							{{#if listData.present}}
-								<button class="button precense-button absent-button">I'm not coming</button>
-							{{else}}
-								<button class="button precense-button present-button">I'm coming</button>
-							{{/if}}
-							<form class="guests">
-								<span>Guests</span>
-								<input class="guests-number" type="number" max="3" min="0" value="{{listData.guests}}">
-							</form>
+							
 						</aside>
 						{{#if listData.friday}}
 							<div class="next-week-border"></div>

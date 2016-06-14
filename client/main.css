@@ -267,23 +267,33 @@ main {
 }
 
 .agenda-main {
+	width:110%;
+	margin-left: -5%;
     padding-top: 13px;
     padding-bottom: 13px;
 	cursor: pointer;
-	position: relative;
 	overflow: hidden;
 	display: block;
+	color: black;
+	-moz-transition: background 0.3s;
+	-webkit-transition: background 0.3s;
+	transition: background 0.3s;
 }
 
 .agenda-drawer {
 	width: 110%;
     margin-left: -5%;
-    padding:5%;
-/*    height: 0px;
+    background: white;
+    padding:0;
     opacity: 0;
-    visibility: hidden;
-    transition: height 0.6s, opacity 0.6s;*/
-	display: none;
+	max-height: 0;
+	-moz-transition: max-height 0.4s, opacity 0.3s;
+	-webkit-transition: max-height 0.4s, opacity 0.3s;
+	transition: max-height 0.4s, opacity 0.3s;
+}
+
+.agenda-drawer-inner {
+	padding: 13px 5%;
 }
 
 .day-info {
@@ -321,6 +331,13 @@ main {
 	border-radius: 0;
 	font-size: 0.9em;
 	-webkit-appearance: none;
+	-moz-transition: background 0.4s;
+	-webkit-transition: background 0.4s;
+	transition: background 0.4s;
+}
+
+.button:hover {
+	background: rgb(0, 153, 129);
 }
 
 .guests {
@@ -478,6 +495,9 @@ input[disabled] {
 	color: white;
 	text-align: center;
 	cursor: pointer;
+	-moz-transition: background 1s;
+	-webkit-transition: background 1s;
+	transition: background 1s;
 }
 
 .agenda-block a {
@@ -527,13 +547,81 @@ input[disabled] {
     display: inline-block;
 }
 
-.weekday-label input[type="checkbox"] {
+/* CHECKBOX STYLING */
+
+input[type="checkbox"] {
+	display: none;
+}
+
+.weekday-label input[type="checkbox"] + label {
 	display: block;
 	margin: 0 auto;
-	width: 20px;
-    height: 20px;
+	width: 24px;
+    height: 25px;
 	margin-bottom: 5px;
+    font-size: 13px;
+    position: relative;
 }
+
+.weekday-label input[type="checkbox"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #00b89c;
+}
+
+.weekday-label input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #f3f3f3;
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+
+
+
+.month-label input[type="checkbox"] + label {
+	width: 25px;
+    height: 25px;
+	margin-bottom: 5px;
+    font-size: 13px;
+    position: relative;
+}
+
+.month-label input[type="checkbox"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #00b89c;
+    position: absolute;
+}
+
+.month-label input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #f3f3f3;
+    text-align: center;
+    line-height: 24px;
+}
+
+.month-label span {
+	margin-left: 33px;
+}
+
+/* ---------------- */
 
 .fieldset-column {
 	width:50%;
@@ -544,13 +632,7 @@ input[disabled] {
 .month-label {
 	display: block;
 	text-align: left;
-	margin-top: 5px;
-}
-
-.month-label input[type="checkbox"] {
-	width:20px;
-	height: 20px;
-    margin-bottom: 5px;
+	margin-top: 10px;
 }
 
 .transparent-button {
@@ -576,11 +658,16 @@ input[disabled] {
 }
 
 .employee-main {
-	padding: 13px 0;
+	padding: 13px 5%;
 	position: relative;
 	overflow: hidden;
 	display: block;
 	color: black;
+	width: 110%;
+    margin-left: -5%;
+    -moz-transition: background 0.4s;
+    -webkit-transition: background 0.4s;
+	transition: background 0.4s;
 }
 
 .employee-name {
@@ -593,8 +680,16 @@ input[disabled] {
 .employee-drawer {
 	width: 110%;
     margin-left: -5%;
-    padding:5%;
-	display: none;
+    background: white;
+	opacity: 0;
+	max-height: 0;
+	-moz-transition: max-height 0.4s, opacity 0.4s;
+	-webkit-transition: max-height 0.4s, opacity 0.4s;
+	transition: max-height 0.4s, opacity 0.4s;
+}
+
+.employee-drawer-inner {
+	padding:5%;
 }
 
 /* --Cross */
@@ -671,6 +766,18 @@ input[disabled] {
     height: 184px;
     box-shadow: 0 0 0 999px rgba(0,0,0,0.5);
     border-top: 15px solid #00B89C;
+    -webkit-animation: message 0.3s;
+            animation: message 0.3s;
+}
+
+@-webkit-keyframes message {
+    from {opacity: 0;filter: alpha(opacity=0); -webkit-transform: translateY(-30px); transform: translateY(-30px);}
+    to {opacity: 1;filter: alpha(opacity=100); -webkit-transform: translateY(0); transform: translateY(0);}
+}
+
+@keyframes message {
+    from {opacity: 0;filter: alpha(opacity=0); -webkit-transform: translateY(-30px); transform: translateY(-30px);}
+    to {opacity: 1;filter: alpha(opacity=100); -webkit-transform: translateY(0); transform: translateY(0);}
 }
 
 .confirmation {
@@ -704,6 +811,7 @@ input[disabled] {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	width: 100px;
 	height: 80px;
@@ -775,15 +883,15 @@ input[disabled] {
 	display: block;
 }
 
-.drawer-active {
+.main-active {
+	background: white;
 	width: 110%;
     margin-left: -5%;
-    background: white;
-	padding: 13px 5%;
-    /*visibility: visible;
-    height: 300px;
-    opacity: 1;*/
-    display: block;
+}
+
+.drawer-active {
+	opacity: 1;
+    max-height: 500px;
 }
 
 .toggle-active {

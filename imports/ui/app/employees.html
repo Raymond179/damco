@@ -30,10 +30,13 @@
 							<h2 class="employee-name">{{employeeData.name}}</h2>
 						</a>
 						<aside class="employee-drawer">
-							<div class="desk-toggle">
-								<button class="desk-toggle-flex {{#if employeeData.flex}} toggle-active {{/if}}">Flex</button>
-								<button class="desk-toggle-fixed {{#if employeeData.fixed}} toggle-active {{/if}}">Fixed</button>
+							<div class="employee-drawer-inner">
+								<div class="desk-toggle">
+									<button class="desk-toggle-flex {{#if employeeData.flex}} toggle-active {{/if}}">Flex</button>
+									<button class="desk-toggle-fixed {{#if employeeData.fixed}} toggle-active {{/if}}">Fixed</button>
+								</div>
 							</div>
+							
 						</aside>
 					</li>
 				{{/each}}

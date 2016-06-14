@@ -537,13 +537,81 @@ input[disabled] {
     display: inline-block;
 }
 
-.weekday-label input[type="checkbox"] {
+/* CHECKBOX STYLING */
+
+input[type="checkbox"] {
+	display: none;
+}
+
+.weekday-label input[type="checkbox"] + label {
 	display: block;
 	margin: 0 auto;
-	width: 20px;
-    height: 20px;
+	width: 24px;
+    height: 25px;
 	margin-bottom: 5px;
+    font-size: 13px;
+    position: relative;
 }
+
+.weekday-label input[type="checkbox"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #00b89c;
+}
+
+.weekday-label input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #f3f3f3;
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+
+
+
+.month-label input[type="checkbox"] + label {
+	width: 25px;
+    height: 25px;
+	margin-bottom: 5px;
+    font-size: 13px;
+    position: relative;
+}
+
+.month-label input[type="checkbox"] + label:before {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #00b89c;
+    position: absolute;
+}
+
+.month-label input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #f3f3f3;
+    text-align: center;
+    line-height: 24px;
+}
+
+.month-label span {
+	margin-left: 33px;
+}
+
+/* ---------------- */
 
 .fieldset-column {
 	width:50%;
@@ -554,13 +622,7 @@ input[disabled] {
 .month-label {
 	display: block;
 	text-align: left;
-	margin-top: 5px;
-}
-
-.month-label input[type="checkbox"] {
-	width:20px;
-	height: 20px;
-    margin-bottom: 5px;
+	margin-top: 10px;
 }
 
 .transparent-button {

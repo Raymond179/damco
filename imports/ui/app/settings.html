@@ -23,23 +23,28 @@
 					<p>Every</p>
 					<fieldset class="weekday-fieldset">
 						<label class="weekday-label">
-							<input type="checkbox" value="mon" checked="{{#if checkWeekdays 'mon'}}checked{{/if}}">
+							<input type="checkbox" id="mon" value="mon" checked="{{#if checkWeekdays 'mon'}}checked{{/if}}">
+							<label for="mon"></label>
 							<span>Mon</span>
 						</label>
 						<label class="weekday-label">
-							<input type="checkbox" value="tues" checked="{{#if checkWeekdays 'tues'}}checked{{/if}}">
+							<input type="checkbox" id="tues" value="tues" checked="{{#if checkWeekdays 'tues'}}checked{{/if}}">
+							<label for="tues"></label>
 							<span>Tues</span>
 						</label>
 						<label class="weekday-label">
-							<input type="checkbox" value="wed" checked="{{#if checkWeekdays 'wed'}}checked{{/if}}">
+							<input type="checkbox" id="wed" value="wed" checked="{{#if checkWeekdays 'wed'}}checked{{/if}}">
+							<label for="wed"></label>
 							<span>Wed</span>
 						</label>
 						<label class="weekday-label">
-							<input type="checkbox" value="thurs" checked="{{#if checkWeekdays 'thurs'}}checked{{/if}}">
+							<input type="checkbox" id="thurs" value="thurs" checked="{{#if checkWeekdays 'thurs'}}checked{{/if}}">
+							<label for="thurs"></label>
 							<span>Thurs</span>
 						</label>
 						<label class="weekday-label">
-							<input type="checkbox" value="fri" checked="{{#if checkWeekdays 'fri'}}checked{{/if}}">
+							<input type="checkbox" id="fri" value="fri" checked="{{#if checkWeekdays 'fri'}}checked{{/if}}">
+							<label for="fri"></label>
 							<span>Fri</span>
 						</label>
 					</fieldset>
@@ -47,53 +52,65 @@
 					<fieldset class="month-fieldset">
 						<div class="fieldset-column">
 							<label class="month-label">
-								<input type="checkbox" value="0" checked="{{#if checkMonths '0'}}checked{{/if}}">
+								<input type="checkbox" id="jan" value="0" checked="{{#if checkMonths '0'}}checked{{/if}}">
+								<label for="jan"></label>
 								<span> January </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="1" checked="{{#if checkMonths '1'}}checked{{/if}}">
+								<input type="checkbox" id="feb" value="1" checked="{{#if checkMonths '1'}}checked{{/if}}">
+								<label for="feb"></label>
 								<span> February </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="2" checked="{{#if checkMonths '2'}}checked{{/if}}">
+								<input type="checkbox" id="mar" value="2" checked="{{#if checkMonths '2'}}checked{{/if}}">
+								<label for="mar"></label>
 								<span> March </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="3" checked="{{#if checkMonths '3'}}checked{{/if}}">
+								<input type="checkbox" id="apr" value="3" checked="{{#if checkMonths '3'}}checked{{/if}}">
+								<label for="apr"></label>
 								<span> April </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="4" checked="{{#if checkMonths '4'}}checked{{/if}}">
+								<input type="checkbox" id="may" value="4" checked="{{#if checkMonths '4'}}checked{{/if}}">
+								<label for="may"></label>
 								<span> May </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="5" checked="{{#if checkMonths '5'}}checked{{/if}}">
+								<input type="checkbox" id="jun" value="5" checked="{{#if checkMonths '5'}}checked{{/if}}">
+								<label for="jun"></label>
 								<span> June </span>
 							</label>
 						</div>
 						<div class="fieldset-column">
 							<label class="month-label">
-								<input type="checkbox" value="6" checked="{{#if checkMonths '6'}}checked{{/if}}">
+								<input type="checkbox" id="jul" value="6" checked="{{#if checkMonths '6'}}checked{{/if}}">
+								<label for="jul"></label>
 								<span> July </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="7" checked="{{#if checkMonths '7'}}checked{{/if}}">
+								<input type="checkbox" id="aug" value="7" checked="{{#if checkMonths '7'}}checked{{/if}}">
+								<label for="aug"></label>
 								<span> August </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="8" checked="{{#if checkMonths '8'}}checked{{/if}}">
+								<input type="checkbox" id="sep" value="8" checked="{{#if checkMonths '8'}}checked{{/if}}">
+								<label for="sep"></label>
 								<span> September </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="9" checked="{{#if checkMonths '9'}}checked{{/if}}">
+								<input type="checkbox" id="oct" value="9" checked="{{#if checkMonths '9'}}checked{{/if}}">
+								<label for="oct"></label>
 								<span> October </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="10" checked="{{#if checkMonths '10'}}checked{{/if}}">
+								<input type="checkbox" id="nov" value="10" checked="{{#if checkMonths '10'}}checked{{/if}}">
+								<label for="nov"></label>
 								<span> November </span>
 							</label>
 							<label class="month-label">
-								<input type="checkbox" value="11" checked="{{#if checkMonths '11'}}checked{{/if}}">
+								<input type="checkbox" id="dec" value="11" checked="{{#if checkMonths '11'}}checked{{/if}}">
+								<label for="dec"></label>
 								<span> December </span>
 							</label>
 						</div>

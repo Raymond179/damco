@@ -488,6 +488,9 @@ input[disabled] {
 	color: white;
 	text-align: center;
 	cursor: pointer;
+	-moz-transition: background 1s;
+	-webkit-transition: background 1s;
+	transition: background 1s;
 }
 
 .agenda-block a {

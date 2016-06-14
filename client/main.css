@@ -267,23 +267,33 @@ main {
 }
 
 .agenda-main {
+	width:110%;
+	margin-left: -5%;
     padding-top: 13px;
     padding-bottom: 13px;
 	cursor: pointer;
-	position: relative;
 	overflow: hidden;
 	display: block;
+	color: black;
+	-moz-transition: background 0.3s;
+	-webkit-transition: background 0.3s;
+	transition: background 0.3s;
 }
 
 .agenda-drawer {
 	width: 110%;
     margin-left: -5%;
-    padding:5%;
-/*    height: 0px;
+    background: white;
+    padding:0;
     opacity: 0;
-    visibility: hidden;
-    transition: height 0.6s, opacity 0.6s;*/
-	display: none;
+	max-height: 0;
+	-moz-transition: max-height 0.4s, opacity 0.3s;
+	-webkit-transition: max-height 0.4s, opacity 0.3s;
+	transition: max-height 0.4s, opacity 0.3s;
+}
+
+.agenda-drawer-inner {
+	padding: 13px 5%;
 }
 
 .day-info {
@@ -576,11 +586,16 @@ input[disabled] {
 }
 
 .employee-main {
-	padding: 13px 0;
+	padding: 13px 5%;
 	position: relative;
 	overflow: hidden;
 	display: block;
 	color: black;
+	width: 110%;
+    margin-left: -5%;
+    -moz-transition: background 0.4s;
+    -webkit-transition: background 0.4s;
+	transition: background 0.4s;
 }
 
 .employee-name {
@@ -593,8 +608,16 @@ input[disabled] {
 .employee-drawer {
 	width: 110%;
     margin-left: -5%;
-    padding:5%;
-	display: none;
+    background: white;
+	opacity: 0;
+	max-height: 0;
+	-moz-transition: max-height 0.4s, opacity 0.4s;
+	-webkit-transition: max-height 0.4s, opacity 0.4s;
+	transition: max-height 0.4s, opacity 0.4s;
+}
+
+.employee-drawer-inner {
+	padding:5%;
 }
 
 /* --Cross */
@@ -704,6 +727,7 @@ input[disabled] {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	width: 100px;
 	height: 80px;
@@ -775,15 +799,15 @@ input[disabled] {
 	display: block;
 }
 
-.drawer-active {
+.main-active {
+	background: white;
 	width: 110%;
     margin-left: -5%;
-    background: white;
-	padding: 13px 5%;
-    /*visibility: visible;
-    height: 300px;
-    opacity: 1;*/
-    display: block;
+}
+
+.drawer-active {
+	opacity: 1;
+    max-height: 500px;
 }
 
 .toggle-active {

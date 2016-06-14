@@ -88,7 +88,7 @@ Template.agendaList.events({
 	'click .agenda-main'(event) {
 		var drawer = event.currentTarget.parentElement.querySelector('.agenda-drawer');
 		var main = event.currentTarget;
-		main.classList.toggle('drawer-active');
+		main.classList.toggle('main-active');
 		drawer.classList.toggle('drawer-active');
 	},
 	'click .absent-button'(event) {

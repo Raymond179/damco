@@ -1,2 +1,5 @@
 node_modules/
 /.meteor/*
+/fullchain.pem
+/privkey.pem
+/mup.json

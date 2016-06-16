@@ -33,8 +33,23 @@ Template.register.events({
 					Router.go('/');
 				};
 			});
-
-			
+		} else if (key === 'createadmin') {
+			Accounts.createUser({
+				username: username,
+				password: password,
+				profile: {
+					name: 'admin',
+					desk: 'admin'
+				}
+			}, function(err) {
+				if (err) {
+					Session.set('messageVisible', true);
+					Session.set('messageConfirmation', false);
+					Session.set('messageText', err.reason);
+				} else {
+					Router.go('/');
+				};
+			});
 		} else {
 			Session.set('messageVisible', true);
 			Session.set('messageConfirmation', false);

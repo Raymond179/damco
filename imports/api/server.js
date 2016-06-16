@@ -68,5 +68,12 @@ Meteor.methods({
 	},
 	'removeUser'(id) {
 		Meteor.users.remove({_id: id});
+	},
+	'createDesksinfo'() {
+		Desks.insert({
+			name: 'desksInfo',
+			flexDesks: 10,
+			registrationKey: 'damco'
+		});
 	}
 });

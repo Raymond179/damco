@@ -106,7 +106,7 @@ In the Users collection there are three kinds of users. The flex employee, fixed
 ```
 
 ### File structure
-All client and server files are located in the folder 'imports'. The client files are located in the 'ui' folder and the server files in the 'api' folder.
+All client and server files are located in the folder 'imports'. The client files are located in the 'ui' folder and the server files in the 'api' folder. These files are imported in the 'main.js' of the server and client folder.
 
 ```
 |--imports

@@ -37,6 +37,17 @@ Meteor.subscribe("dates", function() {
 		Meteor.call('dates.insert',{year: nextYear, dates: Template.frame.__helpers.get('getData')(nextYear)});
 	};
 });
+
+// When desks are loaded
+Meteor.subscribe("desks", function() {
+	// Insert desksinfo
+	var desksInfo = Desks.findOne({name: 'desksInfo'});
+	console.log(desksInfo)
+	if (desksInfo == null) {
+		Meteor.call('createDesksinfo');
+	};
+});
+
 // Global helpers
 Template.registerHelper('admin', function() {
 	var status = Meteor.user().profile.desk;

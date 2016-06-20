@@ -33,7 +33,10 @@
 				</label>
 				<label>
 					<span class="input-label">Desk:</span>
-					<input class="form-input" type="text" id="desk" value="{{userData.desk}}" disabled>
+					<div class="desk-toggle">
+						<button class="desk-toggle-flex {{#if userData.flex}} toggle-active {{/if}}">Flex</button>
+						<button class="desk-toggle-fixed {{#if userData.fixed}} toggle-active {{/if}}">Fixed</button>
+					</div>
 				</label>
 				<input class="button profile-button" type="submit" value="Save changes">
 				<a href="#" class="logout">Logout</a>

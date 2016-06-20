@@ -2,52 +2,51 @@
 {{#if admin}}
 	<section class="adminSettings">
 		<header class="app-header">
-				<a href="/adminSettings">
-					<svg class="header-icon-left" x="0px" y="0px" width="25.334px" height="25.394px" viewBox="-1.833 -1.837 25.334 25.394" enable-background="new -1.833 -1.837 25.334 25.394" xml:space="preserve">
-						<path fill="#FFFFFF" d="M23.268,3.346l-4.965,4.539l-3.578-3.579l5.072-4.112c0,0-7.423-1.442-6.782,5.727L0.934,16.485
-						c0,0-3.785,2.796-1.473,5.012c2.055,1.967,4.775-1.066,5.65-1.92c0.875-0.854,11.696-9.663,11.696-9.663S23.855,10.875,23.268,3.346
-						z M1.756,20.535c-0.738,0-1.334-0.599-1.334-1.337c0-0.736,0.596-1.335,1.334-1.335c0.739,0,1.335,0.599,1.335,1.335
-						C3.092,19.937,2.495,20.535,1.756,20.535z"/>
-					</svg>
-				</a>
-				<h1 class="app-header-title">SETTINGS</h1>
-				<a href="/">
-					<svg class="header-icon-right" x="0px" y="0px" width="25.334px" height="25.393px" viewBox="0 0 25.334 25.393" enable-background="new 0 0 25.334 25.393" xml:space="preserve">
-						<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M18.925,18.028c6.71-1.775,5.402,5.558,5.402,5.558"/>
-						<ellipse fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="18.925" cy="13.196" rx="2.888" ry="2.923"/>
-						<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M9.612,14.322c11.183-2.961,9.006,9.264,9.006,9.264"/>
-						<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M9.781,14.322c-11.181-2.961-9.006,9.264-9.006,9.264"/>
-						<ellipse fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="9.614" cy="6.266" rx="4.813" ry="4.871"/>
-					</svg>
-				</a>
-			</header>
-			<main>
-				<h2 class="form-title">Admin</h2>
-				<form class="admin-form">
-					<label>
-						<span class="input-label-admin">Flex employees:</span>
-						<input class="form-input" type="text" id="flexEmployees" value="{{adminData.flexEmployees}}" disabled>
-					</label>
-					<label>
-						<span class="input-label-admin">Fixed employees:</span>
-						<input class="form-input" type="text" id="fixedEmployees" value="{{adminData.fixedEmployees}}" disabled>
-					</label>
-					<label>
-						<span class="input-label-admin">Flex desks:</span>
-						<input class="form-input" type="number" id="flexDesks" value="{{adminData.flexDesks}}">
-					</label>
-					<label>
-						<span class="input-label-admin">Password:</span>
-						<input class="form-input" type="password" id="adminPassword">
-					</label>
-					<label>
-						<span class="input-label-admin">Registration key:</span>
-						<input class="form-input" type="text" id="registrationKey" value="{{adminData.registrationKey}}">
-					</label>
-					<input class="button profile-button" type="submit" value="Save changes">
-					<a href="#" class="logout">Logout</a>
-				</form>
-			</main>
+			<a href="/">
+				<svg class="header-icon-left" x="0px" y="0px" width="25.334px" height="25.393px" viewBox="0 0 25.334 25.393" enable-background="new 0 0 25.334 25.393" xml:space="preserve">
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M18.925,18.028c6.71-1.775,5.402,5.558,5.402,5.558"/>
+					<ellipse fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="18.925" cy="13.196" rx="2.888" ry="2.923"/>
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M9.612,14.322c11.183-2.961,9.006,9.264,9.006,9.264"/>
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M9.781,14.322c-11.181-2.961-9.006,9.264-9.006,9.264"/>
+					<ellipse fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="9.614" cy="6.266" rx="4.813" ry="4.871"/>
+				</svg>
+			</a>
+			<h1 class="app-header-title">SETTINGS</h1>
+			<a href="/adminSettings">
+				<svg class="header-icon-right" x="0px" y="0px" width="23.502px" height="23.557px" viewBox="0 0 23.502 23.557" enable-background="new 0 0 23.502 23.557" xml:space="preserve">
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.927,13.977c-11.7-3.063-9.423,9.58-9.423,9.58"/>
+					<path fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M11.751,13.977c11.7-3.063,9.423,9.58,9.423,9.58"/>
+					<circle fill="none" stroke="#FFFFFF" stroke-miterlimit="10" cx="11.751" cy="5.647" r="5.037"/>
+				</svg>
+			</a>
+		</header>
+		<main>
+			<h2 class="form-title">Admin</h2>
+			<form class="admin-form">
+				<label>
+					<span class="input-label-admin">Flex employees:</span>
+					<input class="form-input" type="text" id="flexEmployees" value="{{adminData.flexEmployees}}" disabled>
+				</label>
+				<label>
+					<span class="input-label-admin">Fixed employees:</span>
+					<input class="form-input" type="text" id="fixedEmployees" value="{{adminData.fixedEmployees}}" disabled>
+				</label>
+				<label>
+					<span class="input-label-admin">Flex desks:</span>
+					<input class="form-input" type="number" id="flexDesks" value="{{adminData.flexDesks}}">
+				</label>
+				<label>
+					<span class="input-label-admin">Password:</span>
+					<input class="form-input" type="password" id="adminPassword">
+				</label>
+				<label>
+					<span class="input-label-admin">Registration key:</span>
+					<input class="form-input" type="text" id="registrationKey" value="{{adminData.registrationKey}}">
+				</label>
+				<input class="button profile-button" type="submit" value="Save changes">
+				<a href="#" class="logout">Logout</a>
+			</form>
+		</main>
 	</section>
 {{/if}}
 </template>

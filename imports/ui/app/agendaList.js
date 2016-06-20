@@ -26,14 +26,6 @@ Template.agendaList.helpers({
 		return withoutWeekends;
 	},
 	'listData': function() {
-		// Get number of people with flex desk and number of absents
-		var flexUsers = Meteor.users.find({'profile.desk': 'flex'}).fetch().length;
-		var absents = this.absent.length;
-		var peopleComing = flexUsers - absents;
-		// Get number of flex desks and number of extra flex desks
-		var flexDesks = Desks.findOne({name: 'desksInfo'}) && Desks.findOne({name: 'desksInfo'}).flexDesks;
-		var extraFlexDesks = this.extraFlexDesks.length;
-		var availableDesks = flexDesks + extraFlexDesks;
 		// Get total total number of guests and user guests
 		var thisDate = Dates.findOne({year: this.year}).dates[this.monthNumber][this.date-1];
 		var guests = thisDate.guests;
@@ -48,8 +40,16 @@ Template.agendaList.helpers({
 			return sum;
 		} // Source: http://stackoverflow.com/questions/16449295/a-concise-way-to-sum-the-values-of-a-javascript-object
 		var totalGuests = sum(guests);
+		// Get number of people with flex desk and number of absents
+		var flexUsers = Meteor.users.find({'profile.desk': 'flex'}).fetch().length;
+		var absents = this.absent.length;
+		var peopleComing = flexUsers - absents + totalGuests;
+		// Get number of flex desks and number of extra flex desks
+		var flexDesks = Desks.findOne({name: 'desksInfo'}) && Desks.findOne({name: 'desksInfo'}).flexDesks;
+		var extraFlexDesks = this.extraFlexDesks.length;
+		var availableDesks = flexDesks + extraFlexDesks;
 		// Substract available desks with coming people and return
-		var ratio = availableDesks - peopleComing - totalGuests;
+		var ratio = availableDesks - peopleComing;
 		// Check if positive or negative
 		if (ratio < 0) {
 			var value = 'negative';

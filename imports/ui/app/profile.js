@@ -12,17 +12,25 @@ Template.profile.helpers({
 		var username = Meteor.user() && Meteor.user().username;
 		var name = Meteor.user() && Meteor.user().profile && Meteor.user().profile.name;
 		var desk = Meteor.user() && Meteor.user().profile && Meteor.user().profile.desk;
+		if (desk === 'flex') {
+			var flex = true;
+			var fixed = false;
+		} else {
+			var flex = false;
+			var fixed = true;
+		};
 		return {
 			username: username,
 			name: name,
-			desk: desk
+			flex: flex,
+			fixed: fixed
 		};
 	}
 })
 
 // Profile Events
 Template.profile.events({
-	'submit .profile-form'(event, template) {
+	'click .profile-button'(event, template) {
 		event.preventDefault();
 
 		var username = template.find('#username').value;
@@ -45,6 +53,14 @@ Template.profile.events({
 		Meteor.call('updateName', name, username);
 
 	
+	},
+	'click .desk-toggle-flex'(event) {
+		event.preventDefault();
+		Meteor.call('deskChange', Meteor.userId(), 'flex');
+	},
+	'click .desk-toggle-fixed'(event) {
+		event.preventDefault();
+		Meteor.call('deskChange', Meteor.userId(), 'fixed');
 	},
 	'click .logout'(event) {
 		event.preventDefault();

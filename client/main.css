@@ -520,6 +520,28 @@ input[disabled] {
 	background: grey;
 }
 
+.calendar-info {
+	margin-top: 50px;
+}
+
+.calendar-info article {
+	float: left;
+	width: 50%;
+}
+
+.calendar-info .rect {
+	width: 31px;
+	height: 31px;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: -8px;
+}
+
+.calendar-info-inner-container {
+	text-align: center;
+    margin-right: 20px;
+}
+
 /* SETTINGS */
 
 .settings-title {

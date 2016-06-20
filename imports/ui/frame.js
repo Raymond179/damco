@@ -29,10 +29,16 @@ Template.body.onCreated(function bodyOnCreated() {
 // When dates are loaded
 Meteor.subscribe("dates", function() {
     // Check if it's next year
-	var thisYear = new Date;
-	var nextYear = thisYear.getFullYear()+1
-	var findYear = Dates.findOne({year: nextYear});
-	if(findYear == null) {
+	var thisDate = new Date;
+	var thisYear = thisDate.getFullYear();
+	var nextYear = thisYear+1;
+	var findNextYear = Dates.findOne({year: nextYear});
+	var findThisYear = Dates.findOne({year: thisYear});
+	if(findThisYear == null) {
+		// Add this year's dates
+		Meteor.call('dates.insert',{year: thisYear, dates: Template.frame.__helpers.get('getData')(thisYear)});
+	};
+	if(findNextYear == null) {
 		// Add new year's dates
 		Meteor.call('dates.insert',{year: nextYear, dates: Template.frame.__helpers.get('getData')(nextYear)});
 	};
@@ -139,7 +145,6 @@ Template.frame.events({
 	'click .app-header'(event) {
 		// Meteor.call('dates.remove');
 		// Meteor.call('dates.insert',{year: 2016, dates: Template.frame.__helpers.get('getData')(2016)});
-		// Session.set('loader', true)
 	}
 });
 // Frame Helpers

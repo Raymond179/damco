@@ -21,6 +21,7 @@ import './router.js';
 
 // When body template is created
 Template.body.onCreated(function bodyOnCreated() {
+	// Subscribe collections
 	Meteor.subscribe('users');
 	Meteor.subscribe('dates');
 	Meteor.subscribe('desks');
@@ -34,6 +35,7 @@ Meteor.subscribe("dates", function() {
 	var nextYear = thisYear+1;
 	var findNextYear = Dates.findOne({year: nextYear});
 	var findThisYear = Dates.findOne({year: thisYear});
+	// If this year does not exist in collection
 	if(findThisYear == null) {
 		// Add this year's dates
 		Meteor.call('dates.insert',{year: thisYear, dates: Template.frame.__helpers.get('getData')(thisYear)});
@@ -56,6 +58,7 @@ Meteor.subscribe("desks", function() {
 
 // Global helpers
 Template.registerHelper('admin', function() {
+	// Check if admin
 	var status = Meteor.user().profile.desk;
 	if (status === 'admin') {
 		return true;
@@ -64,6 +67,7 @@ Template.registerHelper('admin', function() {
 	};
 });
 Template.registerHelper('message', function() {
+	// Check if message is visible
 	var visible = Session.get('messageVisible');
 	if (visible == null) {
 		var visible = false;
@@ -73,30 +77,38 @@ Template.registerHelper('message', function() {
 		confirmation: Session.get('messageConfirmation'),
 		visible: visible,
 		name: Session.get('messageName')
-	}
+	};
 });
 Template.registerHelper('loading', function() {
+	// Return loading (boolean)
 	return Session.get('loading');
 });
 // Global events
 Template.body.events({
 	'click .no'(event) {
+		// Hide message
 		Session.set('messageVisible', false);
 	},
 	'click .ok'(event) {
+		// Hide message
 		Session.set('messageVisible', false);
 	},
 	'click .yes'(event) {
+		// Hide message
 		Session.set('messageVisible', false);
 	},
 	'click .delete-user-yes'(event) {
+		// Remove user
 		Meteor.call('removeUser', Session.get('userId'));
 	},
 	'click .change-password-yes'(event) {
+		// Reset password
 		Meteor.call('updatePassword', Session.get('password'));
-			Session.set('messageVisible', true);
-			Session.set('messageConfirmation', false);
-			Session.set('messageText', 'Changes saved! Please login with your new password');
+		// Show message
+		Session.set('messageVisible', true);
+		Session.set('messageConfirmation', false);
+		Session.set('messageText', 'Changes saved! Please login with your new password');
+		// Redirect to home
 		Router.go('/');
 	},
 	'click .reset-precense-yes'(event) {
@@ -140,13 +152,7 @@ Template.body.events({
 		Meteor.call('resetSettingsData');
 	}
 });
-// Frame Events
-Template.frame.events({
-	'click .app-header'(event) {
-		// Meteor.call('dates.remove');
-		// Meteor.call('dates.insert',{year: 2016, dates: Template.frame.__helpers.get('getData')(2016)});
-	}
-});
+
 // Frame Helpers
 Template.frame.helpers({
 	'getData': function(year) {
@@ -176,7 +182,7 @@ Template.frame.helpers({
 				);
 				date.setDate(date.getDate() + 1);
 			}
-		}
+		};
 		return data;
 	}
 });

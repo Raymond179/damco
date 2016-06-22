@@ -9,6 +9,7 @@ import './adminSettings.html'
 // Admin helpers
 Template.adminSettings.helpers({
 	'adminData': function() {
+		// Get admin data and return
 		var flexEmployees = Meteor.users.find({'profile.desk': 'flex'}).fetch().length;
 		var fixedEmployees = Meteor.users.find({'profile.desk': 'fixed'}).fetch().length;
 		var flexDesks = Desks.findOne({name: 'desksInfo'}) && Desks.findOne({name: 'desksInfo'}).flexDesks;
@@ -20,13 +21,12 @@ Template.adminSettings.helpers({
 			registrationKey: registrationKey
 		};
 	}
-})
-
+});
 // Admin Events
 Template.adminSettings.events({
 	'submit .admin-form'(event, template) {
 		event.preventDefault();
-
+		// Get form data
 		var flexDesks = parseInt(template.find('#flexDesks').value);
 		var adminPassword = template.find('#adminPassword').value;
 		var registrationKey = template.find('#registrationKey').value;
@@ -48,7 +48,9 @@ Template.adminSettings.events({
 	},
 	'click .logout'(event) {
 		event.preventDefault();
+		// Log out
 		Meteor.logout();
+		// Redirect to home
 		Router.go('/');
 	}
 });

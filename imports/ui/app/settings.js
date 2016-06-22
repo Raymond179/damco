@@ -8,10 +8,12 @@ import './settings.html'
 
 Template.settings.helpers({
 	'checkWeekdays': function(value) {
+		// Get weekdays of user settings
 		var weekdays = Meteor.users.findOne({_id: Meteor.userId()}).profile.settings.weekdays;
 		return weekdays.indexOf(value) > -1;
 	},
 	'checkMonths': function(value) {
+		// Get months of user settings
 		var weekdays = Meteor.users.findOne({_id: Meteor.userId()}).profile.settings.months;
 		return weekdays.indexOf(parseInt(value)) > -1;
 	}
@@ -23,6 +25,7 @@ Template.settings.events({
 		// Get weekdays
 		var weekdays = document.querySelectorAll('.weekday-fieldset input[type="checkbox"]');
 		var checkedWeekdays = [];
+		// Push all checked checkboxes to array
 		for (var i = 0; i < weekdays.length; i++) {
 			if (weekdays[i].checked) {
 				checkedWeekdays.push(weekdays[i].value);
@@ -48,7 +51,6 @@ Template.settings.events({
 		}
 		// Filter dates on weekday
 		var weekdayString = '';
-
 		for (var i = 0; i < checkedWeekdays.length; i++) {
 			if (i === (checkedWeekdays.length -1)) {
 				weekdayString+='(obj.weekday === "'+checkedWeekdays[i]+'")';
@@ -74,13 +76,13 @@ Template.settings.events({
 				Meteor.call('defaultPrecense', year, setModifier);
 			};	
 		};
-		// Send message
+		// Show message
 		Session.set('messageVisible', true);
 		Session.set('messageConfirmation', false);
 		Session.set('messageText', 'Changes saved!');
 	},
 	'click .reset'(event) {
-		// Confiration message
+		// Show message
 		Session.set('messageVisible', true);
 		Session.set('messageConfirmation', true);
 		Session.set('messageText', 'Are you sure you want to reset your precense?');

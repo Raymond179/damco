@@ -86,47 +86,52 @@ Template.agendaList.helpers({
 // Agendalist Events
 Template.agendaList.events({
 	'click .agenda-main'(event) {
+		// Open drawer
 		var drawer = event.currentTarget.parentElement.querySelector('.agenda-drawer');
 		var main = event.currentTarget;
 		main.classList.toggle('main-active');
 		drawer.classList.toggle('drawer-active');
 	},
 	'click .absent-button'(event) {
+		// Loading on
 		Session.set('loading', true);
+		// Get date
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
-		
+		// Insert data in collection
 		var setModifier = { $push: {} };
 		setModifier.$push['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
 
+		// When done, turn off loading
 		setTimeout(function() {Meteor.call('insertPrecense', year, setModifier, function(){
 			Session.set('loading', false);
 		})}, 100)
-		
 	},
 	'click .present-button'(event) {
+		// Loading on
 		Session.set('loading', true);
+		// Get date
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
-		
+		// Insert data in collection
 		var setModifier = { $pull: {} };
 		setModifier.$pull['dates.'+month+'.'+date+'.absent'] = Meteor.userId();
-
+		// When done, turn off loading
 		setTimeout(function() {Meteor.call('insertPrecense', year, setModifier, function(){
 			Session.set('loading', false);
 		})}, 100)
 	},
 	'change .guests-number'(event) {
+		// Get date
 		var date = this.date -1;
 		var month = this.monthNumber;
 		var year = this.year;
 		var value = parseInt(event.currentTarget.value);
-		
+		// Insert data in collection
 		var setModifier = { $set: {} };
 		setModifier.$set['dates.'+month+'.'+date+'.guests.'+Meteor.userId()] = value;
-
 		Meteor.call('insertPrecense', year, setModifier);
 	}
 });

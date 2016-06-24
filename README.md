@@ -1,6 +1,8 @@
 # Damco flex seatings
 This web app is a mutual organization tool for 'flex' employees who have irregular working days and no standard desk. The app shows the number of available 'flex' desks per day, compared to the number of employees present. In addition, employees can enter their standard absentee days and holiday periods. The application can also register fixed employees. The difference between the fixed and flex employees is that only flex employees are included in the calculation of the available desks. Fixed employees have their own desk and are only included in the calculation on days they are absent.
 
+## Application
+
 ### Agenda
 ![alt tag](https://github.com/RaymondKorrel/damco/blob/master/public/readme/agenda.jpg)
 
@@ -142,3 +144,17 @@ All client and server files are located in the folder 'imports'. The client file
 
 ### Routing
 The app's routing is done with the package 'Iron Router'. The routes are listed in 'router.js'.
+
+## Vakken
+
+##### Real-time web
+The application is realtime and is made with Meteor js. Techniques like templating, routing and methods are used.
+
+##### Web-app from scratch
+Although Meteor uses all kinds of libraries, all the javascript code in de application is native. 
+
+##### CSS to the rescue
+The application includes CSS techniques like modals, checkboxes and backgrounds.
+
+##### Browser technologies
+The application is accessible for keyboard.

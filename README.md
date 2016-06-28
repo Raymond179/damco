@@ -38,6 +38,71 @@ The application is build with Meteor JS with the following packages:
 - Accounts-password
 - body-events
 
+### Code
+Meteor has it's own templating structure. Every page of this app has an HTML file wich contains the the following HTML:
+
+#### Templating
+
+```html
+<template name="home">
+    <!-- Template HTML code -->
+</template>
+```
+
+Every page also has a javascript file which include events (click, submit, change etc.) and helpers.
+```javascript
+Template.register.events({
+    'submit .form'(event, template) {
+        console.log('Form submitted');
+    }
+});
+```
+
+The helper object contains functions that support the HTML of that template. They're basically javascript functions.
+
+```javascript
+Template.register.helpers({
+    'registered': function() {
+        return true;
+    }
+});
+```
+
+#### Collections
+
+The Mongodb collections are created on the server in 'ui/api/server.js'. 
+
+```javascript
+export const Desks = new Mongo.Collection('desks');
+```
+
+And are also published on the server:
+
+```javascript
+if (Meteor.isServer) {
+    // Publish collection
+    Meteor.publish('desks', function tasksPublication() {
+        return desks.find();
+    });
+};
+```
+
+Then the collection gets subscribed on the client:
+
+```javascript
+// When HTML is created
+Template.body.onCreated(function bodyOnCreated() {
+    // Subscribe collection
+    Meteor.subscribe('desks');
+});
+```
+
+To receive data from a collection, the collection should be imported in the file you want to receive the data in:
+
+```javascript
+import { Desks } from '../api/server.js';
+```
+
 ### Data
 The app contains 3 mongodb collections:
 

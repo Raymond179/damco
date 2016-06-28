@@ -1,6 +1,9 @@
 # Damco flex seatings
 This web app is a mutual organization tool for 'flex' employees who have irregular working days and no standard desk. The app shows the number of available 'flex' desks per day, compared to the number of employees present. In addition, employees can enter their standard absentee days and holiday periods. The application can also register fixed employees. The difference between the fixed and flex employees is that only flex employees are included in the calculation of the available desks. Fixed employees have their own desk and are only included in the calculation on days they are absent.
 
+Look it up: <br/> 
+damco.raymondkorrel.me
+
 ## Application
 
 ### Agenda

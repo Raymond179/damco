@@ -378,12 +378,17 @@ main {
 	margin-top: 40px;
 }
 
+.profile-form ul {
+	padding: 0;
+}
+
 .admin-form label,
-.profile-form label {
+.profile-form li {
 	display: block;
 	padding: 12px 0;
 	border-bottom: 1px solid #cecece;
 	overflow: hidden;
+	list-style-type: none;
 }
 
 .input-label {
@@ -425,6 +430,7 @@ main {
 
 .form-input:focus {
 	outline: none;
+	border-right: 3px solid #00b89c;
 }
 
 input[disabled] {

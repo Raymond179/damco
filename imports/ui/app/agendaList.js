@@ -89,8 +89,12 @@ Template.agendaList.events({
 		// Open drawer
 		var drawer = event.currentTarget.parentElement.querySelector('.agenda-drawer');
 		var main = event.currentTarget;
+
+		drawer.classList.toggle('show');
 		main.classList.toggle('main-active');
-		drawer.classList.toggle('drawer-active');
+		setTimeout(function() {
+			drawer.classList.toggle('drawer-active');
+		}, 100);
 	},
 	'click .absent-button'(event) {
 		// Loading on

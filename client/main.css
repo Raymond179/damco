@@ -10,6 +10,11 @@ html, body {
 	background: #ededed;
 }
 
+main {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
 a {
 	text-decoration: none;
 }

@@ -48,6 +48,28 @@ Template.agendaOverview.helpers({
 			weekend: weekend
 		};
 	},
+	'checkDay': function() {
+		if (this.date === 1) {
+			return true;
+		} else {
+			return false;
+		};
+	},
+	'firstDay': function() {
+		var days = {
+			mon: 0,
+			tues: 43,
+			wed: 85,
+			thurs: 127,
+			fri: 169,
+			sat: 211,
+			sun: 253
+		};
+
+		if (this.date === 1) {
+			return days[this.weekday];
+		};
+	},
 	'currentMonth': function() {
 		// Translate number in text of the right month and return
 		var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

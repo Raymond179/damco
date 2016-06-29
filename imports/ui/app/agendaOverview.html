@@ -49,7 +49,7 @@
 				<div class="agenda-blocks-container">
 					<ul class="agenda-block-list">
 						{{#each dates}}
-							<li class="agenda-block {{#if overviewData.present}} block-present {{else}} block-absent{{/if}} {{#if overviewData.weekend}} block-weekend {{/if}}">
+							<li class="agenda-block {{#if overviewData.present}} block-present {{else}} block-absent{{/if}} {{#if overviewData.weekend}} block-weekend {{/if}}" style="{{#if checkDay}}margin-left:{{firstDay}}px;{{/if}}">
 								<a class="block-text" href="/">{{date}}</a>
 							</li>
 						{{/each}}

@@ -88,7 +88,11 @@ main {
 	margin-top: 35px;
 }
 
-.form label {
+.form ul {
+	padding: 0;
+}
+
+.form ul li {
 	display: block;
 	width: 300px;
     overflow: hidden;
